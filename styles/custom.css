@@ -1,0 +1,128 @@
+/* styles/custom.css */
+
+body {
+  font-family: 'Arial', sans-serif; /* A common, readable font */
+  color: #333; /* Dark grey for text, good contrast on light backgrounds */
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Georgia', serif; /* A slightly more formal font for headings */
+  color: #1a237e; /* A darker blue for headings */
+}
+
+/* Customizations for Slidev elements */
+.slidev-layout {
+  /* General padding for slides */
+  padding: 20px 40px;
+
+  /* Example: Styling for a 'cover' layout */
+  &.cover {
+    /* Specific styles for cover slides, if needed */
+    /* e.g., text alignment, background image properties */
+    h1 {
+      font-size: 2.5em; /* Larger font for the main title on a cover */
+    }
+  }
+
+  /* Example: Styling for 'fact' layout (if you create one) */
+  &.fact {
+    background-color: #e3f2fd; /* Light blue background for fact slides */
+    border-left: 5px solid #2196f3; /* Blue accent line */
+    padding: 20px;
+  }
+}
+
+/* Code block enhancements */
+pre {
+  background-color: #f4f4f4; /* Light grey background for code blocks */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  overflow-x: auto; /* Ensure code doesn't overflow horizontally */
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace; /* Monospace font for code */
+  color: #c62828; /* Reddish color for inline code or within blocks */
+}
+
+/* Custom class for highlighted text or boxes */
+.highlight-box {
+  background-color: #fff9c4; /* Light yellow background */
+  padding: 15px;
+  border: 1px solid #ffeb3b; /* Yellow border */
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Styling for lists to make them more engaging */
+ul, ol {
+  margin-left: 20px;
+  padding-left: 10px;
+}
+
+li {
+  margin-bottom: 8px; /* Space out list items */
+}
+
+/* Link styling */
+a {
+  color: #1976d2; /* Standard blue for links */
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Specific class for "Did you know?" box */
+.did-you-know {
+  background-color: #e0f7fa; /* Light cyan background */
+  border-left: 6px solid #00bcd4; /* Cyan border */
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.did-you-know p {
+  margin: 0;
+}
+
+.did-you-know strong {
+  color: #00796b; /* Darker cyan for emphasis */
+}
+
+/* Meme placeholder styling */
+.meme-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Just for fun, typical meme font */
+  color: #555;
+}
+
+.meme-placeholder .icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.meme-placeholder .text {
+  font-size: 18px;
+}
+
+/* Custom font imports (example, if needed) */
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap'); */
+/* body { */
+/*   font-family: 'Roboto', sans-serif; */
+/* } */
