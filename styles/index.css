@@ -1,0 +1,87 @@
+/* Ensure @fontsource packages are installed via package.json and imported in a main .js/.ts entry point or via Slidev's font mechanisms */
+
+:root {
+  --slidev-theme-primary: #5E72E4; /* Blue */
+  --slidev-theme-accent-purple: #8965E0;
+  --slidev-theme-accent-green: #2DCE89;
+  --slidev-theme-accent-blue: #11CDEF;
+  --slidev-theme-text-color: #E9ECEF; /* Light gray for text */
+  /* Background is primarily set in slides.md frontmatter */
+  --slidev-code-font-family: 'Fira Code', monospace;
+  --slidev-font-family: 'Inter', sans-serif;
+  --slidev-heading-color: #FFFFFF; /* White for headings */
+  --slidev-heading-font-weight: 700; /* Bold headings */
+}
+
+html, body {
+  font-family: var(--slidev-font-family);
+  color: var(--slidev-theme-text-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--slidev-heading-color);
+  font-weight: var(--slidev-heading-font-weight);
+}
+
+a {
+  color: var(--slidev-theme-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--slidev-theme-primary);
+}
+a:hover {
+  color: #8697FF; /* Lighter blue on hover */
+  border-bottom-color: #8697FF;
+}
+
+code, pre, .slidev-code, .slidev-code code, .language-csharp, .language-bash, .language-json, .language-markdown, .language-powershell, .language-html, .language-css, .language-javascript, .language-typescript, .language-xml, .language-mermaid {
+  font-family: var(--slidev-code-font-family) !important;
+  font-size: 0.875em;
+}
+
+pre {
+  background-color: #222222 !important;
+  padding: 1em;
+  border-radius: 0.3em;
+  line-height: 1.4;
+}
+
+.text-accent-purple { color: var(--slidev-theme-accent-purple); }
+.text-accent-green { color: var(--slidev-theme-accent-green); }
+.text-accent-blue { color: var(--slidev-theme-accent-blue); }
+
+ul, ol { color: var(--slidev-theme-text-color); }
+li::marker { color: var(--slidev-theme-primary); }
+
+img[alt="EF Logo"] { /* SVG is already white, no filter needed */ }
+
+.slidev-layout.cover h1 { font-size: 3.2rem; }
+.slidev-layout.cover p { font-size: 1.15rem; }
+
+.slidev-vclick-target ul > li,
+.slidev-vclick-target ol > li {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+.slidev-vclick-target ul > li.slidev-vclick-hidden,
+.slidev-vclick-target ol > li.slidev-vclick-hidden {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+.slidev-vclick-target ul > li:not(.slidev-vclick-hidden),
+.slidev-vclick-target ol > li:not(.slidev-vclick-hidden) {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Mermaid diagram styling */
+.mermaid {
+  background-color: #f9f9f9;
+  padding: 1em;
+  border-radius: 0.3em;
+  color: #333 !important;
+}
+/* Ensure text elements within Mermaid SVG are dark for visibility on light background */
+.mermaid svg text, .mermaid svg tspan { fill: #333333 !important; }
+.mermaid svg .label { color: #333333 !important; fill: #333333 !important; }
+.mermaid svg .actor { stroke: #333333 !important; fill: #f0f0f0 !important; }
+.mermaid svg .messageLine0, .mermaid svg .messageLine1 { stroke: #555555 !important; }
+.mermaid svg .edgeLabel { color: #333333 !important; fill: #333333 !important; }
