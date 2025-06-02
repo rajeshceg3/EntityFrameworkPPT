@@ -2,13 +2,14 @@
 
 body {
   font-family: 'Arial', sans-serif; /* A common, readable font */
-  color: #333; /* Dark grey for text, good contrast on light backgrounds */
+  color: #E0E0E0; /* Light grey text for readability */
   line-height: 1.6;
+  background-color: #121212; /* Dark background for dark mode */
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Georgia', serif; /* A slightly more formal font for headings */
-  color: #1a237e; /* A darker blue for headings */
+  color: #FFFFFF; /* White text for headings */
 }
 
 /* Customizations for Slidev elements */
@@ -35,26 +36,28 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Code block enhancements */
 pre {
-  background-color: #f4f4f4; /* Light grey background for code blocks */
+  background-color: #1E1E1E; /* Darker background for code blocks */
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 10px;
   overflow-x: auto; /* Ensure code doesn't overflow horizontally */
+  color: #C0C0C0; /* Light grey text for code */
 }
 
 code {
   font-family: 'Courier New', Courier, monospace; /* Monospace font for code */
-  color: #c62828; /* Reddish color for inline code or within blocks */
+  color: #FFCC00; /* Yellow text for inline code or within blocks */
 }
 
 /* Custom class for highlighted text or boxes */
 .highlight-box {
-  background-color: #fff9c4; /* Light yellow background */
+  background-color: #333333; /* Dark grey background for highlight boxes */
   padding: 15px;
-  border: 1px solid #ffeb3b; /* Yellow border */
+  border: 1px solid #555555; /* Slightly lighter border */
   border-radius: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
+  color: #E0E0E0; /* Light grey text */
 }
 
 /* Styling for lists to make them more engaging */
@@ -78,12 +81,13 @@ a:hover {
 
 /* Specific class for "Did you know?" box */
 .did-you-know {
-  background-color: #e0f7fa; /* Light cyan background */
-  border-left: 6px solid #00bcd4; /* Cyan border */
+  background-color: #263238; /* Dark cyan background */
+  border-left: 6px solid #00ACC1; /* Cyan border */
   padding: 16px;
   margin: 16px 0;
   border-radius: 4px;
   font-size: 0.9em;
+  color: #B0BEC5; /* Light cyan text */
 }
 
 .did-you-know p {

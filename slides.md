@@ -2954,19 +2954,49 @@ EF Core is well-suited for complex applications like e-commerce platforms. Consi
   <p class="text-yellow-300">🛍️ E-commerce Data Model</p>
 ```mermaid
 erDiagram
-    CUSTOMER ||--o{ ORDER : places
-    ORDER ||--|{ ORDER_ITEM : contains
+    CUSTOMER ||--o{ ORDER : "places"
+    ORDER ||--|{ ORDER_ITEM : "contains"
     PRODUCT ||--o{ ORDER_ITEM : "is part of"
     PRODUCT ||--|{ REVIEW : "has"
     CUSTOMER ||--o{ REVIEW : "writes"
     CATEGORY ||--o{ PRODUCT : "groups"
 
-    CUSTOMER { int CustomerId PK; string Name; string Email; }
-    PRODUCT { int ProductId PK; string Name; decimal Price; int StockQuantity; int CategoryId FK; }
-    CATEGORY { int CategoryId PK; string Name; }
-    ORDER { int OrderId PK; int CustomerId FK; datetime OrderDate; decimal TotalAmount; }
-    ORDER_ITEM { int OrderItemId PK; int OrderId FK; int ProductId FK; int Quantity; decimal UnitPrice; }
-    REVIEW { int ReviewId PK; int ProductId FK; int CustomerId FK; int Rating; string Comment; }
+    CUSTOMER {
+        int CustomerId PK
+        string Name
+        string Email
+    }
+    PRODUCT {
+        int ProductId PK
+        string Name
+        decimal Price
+        int StockQuantity
+        int CategoryId FK
+    }
+    CATEGORY {
+        int CategoryId PK
+        string Name
+    }
+    ORDER {
+        int OrderId PK
+        int CustomerId FK
+        datetime OrderDate
+        decimal TotalAmount
+    }
+    ORDER_ITEM {
+        int OrderItemId PK
+        int OrderId FK
+        int ProductId FK
+        int Quantity
+        decimal UnitPrice
+    }
+    REVIEW {
+        int ReviewId PK
+        int ProductId FK
+        int CustomerId FK
+        int Rating
+        string Comment
+    }
 ```
 </div>
 

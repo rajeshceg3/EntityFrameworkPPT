@@ -1,11 +1,11 @@
 /* Ensure @fontsource packages are installed via package.json and imported in a main .js/.ts entry point or via Slidev's font mechanisms */
 
 :root {
-  --slidev-theme-primary: #5E72E4; /* Blue */
-  --slidev-theme-accent-purple: #8965E0;
-  --slidev-theme-accent-green: #2DCE89;
-  --slidev-theme-accent-blue: #11CDEF;
-  --slidev-theme-text-color: #E9ECEF; /* Light gray for text */
+  --slidev-theme-primary: #BB86FC; /* Purple for primary theme */
+  --slidev-theme-accent-purple: #3700B3;
+  --slidev-theme-accent-green: #03DAC6;
+  --slidev-theme-accent-blue: #03A9F4;
+  --slidev-theme-text-color: #E0E0E0; /* Light grey for text */
   /* Background is primarily set in slides.md frontmatter */
   --slidev-code-font-family: 'Fira Code', monospace;
   --slidev-font-family: 'Inter', sans-serif;
@@ -13,7 +13,15 @@
   --slidev-heading-font-weight: 700; /* Bold headings */
 }
 
-html, body {
+html {
+  height: 100vh;
+  overflow-y: auto;
+}
+
+body {
+  min-height: 100vh;
+  overflow-y: auto;
+  background-color: #121212; /* Dark background */
   font-family: var(--slidev-font-family);
   color: var(--slidev-theme-text-color);
 }
@@ -29,8 +37,8 @@ a {
   border-bottom: 1px solid var(--slidev-theme-primary);
 }
 a:hover {
-  color: #8697FF; /* Lighter blue on hover */
-  border-bottom-color: #8697FF;
+  color: #A76DFF; /* Lighter purple on hover */
+  border-bottom-color: #A76DFF;
 }
 
 code, pre, .slidev-code, .slidev-code code, .language-csharp, .language-bash, .language-json, .language-markdown, .language-powershell, .language-html, .language-css, .language-javascript, .language-typescript, .language-xml, .language-mermaid {
@@ -39,7 +47,8 @@ code, pre, .slidev-code, .slidev-code code, .language-csharp, .language-bash, .l
 }
 
 pre {
-  background-color: #222222 !important;
+  background-color: #1E1E1E !important; /* Darker background for code blocks */
+  color: #C0C0C0; /* Light grey text for code */
   padding: 1em;
   border-radius: 0.3em;
   line-height: 1.4;
@@ -52,10 +61,21 @@ pre {
 ul, ol { color: var(--slidev-theme-text-color); }
 li::marker { color: var(--slidev-theme-primary); }
 
-img[alt="EF Logo"] { /* SVG is already white, no filter needed */ }
-
 .slidev-layout.cover h1 { font-size: 3.2rem; }
 .slidev-layout.cover p { font-size: 1.15rem; }
+
+.slidev-layout {
+  max-height: 100vh;
+  overflow-y: auto !important;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.slidev-page {
+  height: auto;
+  min-height: 100vh;
+}
 
 .slidev-vclick-target ul > li,
 .slidev-vclick-target ol > li {
@@ -74,14 +94,46 @@ img[alt="EF Logo"] { /* SVG is already white, no filter needed */ }
 
 /* Mermaid diagram styling */
 .mermaid {
-  background-color: #f9f9f9;
+  background-color: #1E1E1E !important;
+  color: #E0E0E0 !important;
   padding: 1em;
   border-radius: 0.3em;
-  color: #333 !important;
+  width: 100%;
 }
-/* Ensure text elements within Mermaid SVG are dark for visibility on light background */
-.mermaid svg text, .mermaid svg tspan { fill: #333333 !important; }
-.mermaid svg .label { color: #333333 !important; fill: #333333 !important; }
-.mermaid svg .actor { stroke: #333333 !important; fill: #f0f0f0 !important; }
-.mermaid svg .messageLine0, .mermaid svg .messageLine1 { stroke: #555555 !important; }
-.mermaid svg .edgeLabel { color: #333333 !important; fill: #333333 !important; }
+
+/* Ensure text elements within Mermaid SVG are light colored for dark background */
+.mermaid svg {
+  background-color: transparent !important;
+}
+
+.mermaid svg text,
+.mermaid svg tspan {
+  fill: #E0E0E0 !important;
+  color: #E0E0E0 !important;
+}
+
+.mermaid svg .label {
+  color: #E0E0E0 !important;
+  fill: #E0E0E0 !important;
+}
+
+.mermaid svg .actor {
+  stroke: #E0E0E0 !important;
+  fill: #2C2C2C !important;
+}
+
+.mermaid svg .messageLine0,
+.mermaid svg .messageLine1 {
+  stroke: #AAAAAA !important;
+}
+
+.mermaid svg .edgeLabel {
+  color: #E0E0E0 !important;
+  fill: #E0E0E0 !important;
+  background-color: #2C2C2C !important;
+}
+
+.mermaid svg .cluster rect {
+  fill: #2C2C2C !important;
+  stroke: #E0E0E0 !important;
+}
