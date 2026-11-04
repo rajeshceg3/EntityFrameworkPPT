@@ -1,3 +1,5 @@
+@import "@fontsource/noto-emoji/400.css";
+
 /* Ensure @fontsource packages are installed via package.json and imported in a main .js/.ts entry point or via Slidev's font mechanisms */
 
 :root {
@@ -137,3 +139,6 @@ li::marker { color: var(--slidev-theme-primary); }
   fill: #2C2C2C !important;
   stroke: #E0E0E0 !important;
 }
+
+/* Bundle emoji glyphs so slides do not depend on the viewer OS fonts. */
+.slidev-layout { font-family: "Inter", "Noto Emoji", ui-sans-serif, system-ui, sans-serif; }

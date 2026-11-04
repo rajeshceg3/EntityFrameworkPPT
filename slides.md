@@ -1,5 +1,6 @@
 ---
 theme: '@slidev/theme-default'
+colorSchema: dark
 background: 'linear-gradient(45deg, #1e3c72, #2a5298)'
 highlighter: prism
 lineNumbers: true
@@ -426,6 +427,14 @@ You'll define a class that inherits from `Microsoft.EntityFrameworkCore.DbContex
    - For ASP.NET Core, these options are typically injected via Dependency Injection.
    - For other app types, you might configure them in `OnConfiguring` or pass them manually.
 
+
+
+---
+layout: default
+---
+
+# Creating Your First Context: Example
+
 **Example: Context for an ASP.NET Core application:**
 ```csharp
 // MyAppContext.cs
@@ -625,10 +634,36 @@ EF Core needs to understand how your POCO classes map to the database schema (ta
     <li>Simple and declarative.</li>
     <li>Keeps configuration close to the entity definition.</li>
     <li>Good for common configurations.</li>
-    <li>Located in `System.ComponentModel.DataAnnotations` and `System.ComponentModel.DataAnnotations.Schema`.</li>
+    <li>Located in <code>System.ComponentModel.DataAnnotations</code> and <code>System.ComponentModel.DataAnnotations.Schema</code>.</li>
   </ul>
   <p class="text-sm font-semibold mt-2">Examples:</p>
-  <pre class="text-xs"><code class="language-csharp">
+
+</div>
+<div>
+  <h3 class="text-xl font-semibold text-green-300 mb-2">Fluent API</h3>
+  <p class="text-sm opacity-80">Configuration applied using EF Core model builder methods, typically in <code>OnModelCreating</code> in your <code>DbContext</code>.</p>
+  <ul class="list-disc pl-5 space-y-1 text-xs mt-2">
+    <li>More powerful and flexible.</li>
+    <li>Keeps entity classes clean (no EF-specific attributes).</li>
+    <li>Better for complex mappings and database-specific features.</li>
+    <li>Provides a centralized place for configuration.</li>
+  </ul>
+  <p class="text-sm font-semibold mt-2">Examples (in <code>OnModelCreating</code>):</p>
+
+</div>
+</div>
+<p class="mt-4 text-center text-purple-300 italic text-sm">💡 You can use both! Fluent API overrides Data Annotations if there's a conflict.</p>
+
+---
+layout: default
+---
+
+# Configuration Examples
+
+<div class="grid grid-cols-2 gap-6">
+<div>
+<h3>Data Annotations</h3>
+<pre class="text-xs"><code class="language-csharp">
   public class User
   {
       [Key] // Primary Key
@@ -644,16 +679,8 @@ EF Core needs to understand how your POCO classes map to the database schema (ta
   </code></pre>
 </div>
 <div>
-  <h3 class="text-xl font-semibold text-green-300 mb-2">Fluent API</h3>
-  <p class="text-sm opacity-80">Configuration applied using EF Core model builder methods, typically in `OnModelCreating` in your `DbContext`.</p>
-  <ul class="list-disc pl-5 space-y-1 text-xs mt-2">
-    <li>More powerful and flexible.</li>
-    <li>Keeps entity classes clean (no EF-specific attributes).</li>
-    <li>Better for complex mappings and database-specific features.</li>
-    <li>Provides a centralized place for configuration.</li>
-  </ul>
-  <p class="text-sm font-semibold mt-2">Examples (in `OnModelCreating`):</p>
-  <pre class="text-xs"><code class="language-csharp">
+<h3>Fluent API</h3>
+<pre class="text-xs"><code class="language-csharp">
   modelBuilder.Entity&lt;User&gt;().ToTable("ApplicationUsers");
   modelBuilder.Entity&lt;User&gt;()
       .HasKey(u => u.UserId);
@@ -670,7 +697,6 @@ EF Core needs to understand how your POCO classes map to the database schema (ta
   </code></pre>
 </div>
 </div>
-<p class="mt-4 text-center text-purple-300 italic text-sm">💡 You can use both! Fluent API overrides Data Annotations if there's a conflict.</p>
 
 ---
 layout: default
@@ -694,12 +720,28 @@ Navigation properties are properties on your entity classes that represent relat
   </li>
 </ul>
 
+
+
+---
+layout: default
+---
+
+# Using Navigation Properties
+
 **How EF Core uses them:**
 <ul>
   <li>To understand and create database relationships (foreign keys).</li>
   <li>To enable loading of related data (e.g., eager loading with `Include()`).</li>
   <li>To traverse object graphs in your code (e.g., `myBlog.Posts.Add(newPost)`).</li>
 </ul>
+
+
+
+---
+layout: default
+---
+
+# Navigation Properties: Example
 
 **Example:**
 ```csharp
@@ -2912,42 +2954,54 @@ layout: default
 
 EF Core is well-suited for complex applications like e-commerce platforms. Consider these core entities and relationships:
 
-<div class="grid grid-cols-2 gap-6 mt-4 text-sm">
+<div class="mt-4 text-base">
 <div>
 <strong>Core Entities:</strong>
 <ul class="list-disc pl-5">
-  <li>`Customer` (UserId, Name, Email, Addresses)</li>
-  <li>`Product` (ProductId, Name, Description, Price, StockQuantity, CategoryId)</li>
-  <li>`Category` (CategoryId, Name)</li>
-  <li>`Order` (OrderId, CustomerId, OrderDate, TotalAmount, ShippingAddress, BillingAddress)</li>
-  <li>`OrderItem` (OrderItemId, OrderId, ProductId, Quantity, UnitPrice)</li>
-  <li>`ShoppingCart` / `CartItem` (for managing user carts)</li>
-  <li>`Inventory` (if stock management is complex)</li>
-  <li>`Review` (ReviewId, ProductId, CustomerId, Rating, Comment)</li>
+  <li><code>Customer</code> (UserId, Name, Email, Addresses)</li>
+  <li><code>Product</code> (ProductId, Name, Description, Price, StockQuantity, CategoryId)</li>
+  <li><code>Category</code> (CategoryId, Name)</li>
+  <li><code>Order</code> (OrderId, CustomerId, OrderDate, TotalAmount, ShippingAddress, BillingAddress)</li>
+  <li><code>OrderItem</code> (OrderItemId, OrderId, ProductId, Quantity, UnitPrice)</li>
+  <li><code>ShoppingCart</code> / <code>CartItem</code> (for managing user carts)</li>
+  <li><code>Inventory</code> (if stock management is complex)</li>
+  <li><code>Review</code> (ReviewId, ProductId, CustomerId, Rating, Comment)</li>
 </ul>
 </div>
+</div>
+
+---
+layout: default
+---
+
+# E-commerce Relationships
+
 <div>
 <strong>Key Relationships &amp; EF Core Concepts:</strong>
 <ul class="list-disc pl-5">
-  <li>**Customer to Orders:** One-to-Many (`Customer.Orders`)</li>
-  <li>**Order to OrderItems:** One-to-Many (`Order.OrderItems`)</li>
-  <li>**Product to OrderItems:** One-to-Many (`Product.OrderItems`)</li>
-  <li>**Product to Category:** Many-to-One (`Product.Category`)</li>
-  <li>**Product to Reviews:** One-to-Many (`Product.Reviews`)</li>
-  <li>**Owned Entity Types:** `Address` can be owned by `Customer` and `Order`.</li>
-  <li>**Complex Queries:** Calculating total sales, finding popular products, customer order history (using LINQ, `GroupBy`, `Sum`, `Average`).</li>
-  <li>**Transactions:** Ensuring `Order` and `OrderItem` creation, and stock deduction happen atomically (`DbContext.Database.BeginTransactionAsync()`).</li>
-  <li>**Concurrency Control:** For `StockQuantity` updates (`IsRowVersion()` / optimistic concurrency).</li>
+  <li><strong>Customer to Orders:</strong> One-to-Many (<code>Customer.Orders</code>)</li>
+  <li><strong>Order to OrderItems:</strong> One-to-Many (<code>Order.OrderItems</code>)</li>
+  <li><strong>Product to OrderItems:</strong> One-to-Many (<code>Product.OrderItems</code>)</li>
+  <li><strong>Product to Category:</strong> Many-to-One (<code>Product.Category</code>)</li>
+  <li><strong>Product to Reviews:</strong> One-to-Many (<code>Product.Reviews</code>)</li>
+  <li><strong>Owned Entity Types:</strong> <code>Address</code> can be owned by <code>Customer</code> and <code>Order</code>.</li>
+  <li><strong>Complex Queries:</strong> Calculating total sales, finding popular products, customer order history (using LINQ, <code>GroupBy</code>, <code>Sum</code>, <code>Average</code>).</li>
+  <li><strong>Transactions:</strong> Ensuring <code>Order</code> and <code>OrderItem</code> creation, and stock deduction happen atomically (<code>DbContext.Database.BeginTransactionAsync()</code>).</li>
+  <li><strong>Concurrency Control:</strong> For <code>StockQuantity</code> updates (<code>IsRowVersion()</code> / optimistic concurrency).</li>
 </ul>
 </div>
-</div>
 
-<!-- Placeholder for Mermaid Diagram -->
-<div class="mt-4 p-3 bg-gray-700 rounded-lg text-center">
-  <p class="text-yellow-300">🛍️ E-commerce Data Model</p>
-</div>
 
-```mermaid
+---
+layout: default
+---
+
+# E-commerce Data Model
+
+
+<!-- E-commerce Data Model: editable Mermaid diagram -->
+```mermaid {scale: 0.7}
+%%{init: {"er": {"layoutDirection": "LR", "entityPadding": 10, "fontSize": 18, "minEntityWidth": 85, "minEntityHeight": 30}, "fontSize": 18}}%%
 erDiagram
     CUSTOMER ||--o{ ORDER : "places"
     ORDER ||--|{ ORDER_ITEM : "contains"
