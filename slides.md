@@ -445,8 +445,8 @@ public class MyAppContext : DbContext
 }
 ```
 <div class="text-xs text-gray-400 mt-1">
-  In `Program.cs` (or `Startup.cs`), you'd register this like:
-  `builder.Services.AddDbContext<MyAppContext>(opt => opt.UseSqlServer(connStr));`
+  In <code>Program.cs</code> (or <code>Startup.cs</code>), you'd register this like:
+  <code>builder.Services.AddDbContext&lt;MyAppContext>(opt => opt.UseSqlServer(connStr));</code>
 </div>
 
 This setup allows `MyAppContext` to be injected into your services, controllers, etc.
@@ -633,14 +633,11 @@ EF Core needs to understand how your POCO classes map to the database schema (ta
   {
       [Key] // Primary Key
       public int UserId { get; set; }
-
       [Required] // Not Null
       [MaxLength(100)] // nvarchar(100)
       public string Username { get; set; }
-
       [Column("EmailAddress", TypeName = "varchar(255)")]
       public string Email { get; set; }
-
       [NotMapped] // Not persisted to DB
       public string FullName => Username;
   }
@@ -658,20 +655,16 @@ EF Core needs to understand how your POCO classes map to the database schema (ta
   <p class="text-sm font-semibold mt-2">Examples (in `OnModelCreating`):</p>
   <pre class="text-xs"><code class="language-csharp">
   modelBuilder.Entity&lt;User&gt;().ToTable("ApplicationUsers");
-
   modelBuilder.Entity&lt;User&gt;()
       .HasKey(u => u.UserId);
-
   modelBuilder.Entity&lt;User&gt;()
       .Property(u => u.Username)
       .IsRequired()
       .HasMaxLength(100);
-
   modelBuilder.Entity&lt;User&gt;()
       .Property(u => u.Email)
       .HasColumnName("EmailAddress")
       .HasColumnType("varchar(255)");
-
   modelBuilder.Entity&lt;User&gt;()
       .Ignore(u => u.FullName);
   </code></pre>
@@ -696,8 +689,8 @@ Navigation properties are properties on your entity classes that represent relat
     <br/><span class="text-xs opacity-75">Example: A `Post` entity might have a `public Blog Blog { get; set; }` property.</span>
   </li>
   <li class="mb-2">
-    <strong>Collection Navigation Property:</strong> Represents a one-to-many (from the "many" side) or many-to-many relationship. Holds a collection of related entities (e.g., `ICollection<T>`, `List<T>`).
-    <br/><span class="text-xs opacity-75">Example: A `Blog` entity might have a `public ICollection<Post> Posts { get; set; }` property.</span>
+    <strong>Collection Navigation Property:</strong> Represents a one-to-many (from the "many" side) or many-to-many relationship. Holds a collection of related entities (e.g., <code>ICollection&lt;T></code>, <code>List&lt;T></code>).
+    <br/><span class="text-xs opacity-75">Example: A <code>Blog</code> entity might have a <code>public ICollection&lt;Post> Posts { get; set; }</code> property.</span>
   </li>
 </ul>
 
@@ -2921,7 +2914,7 @@ EF Core is well-suited for complex applications like e-commerce platforms. Consi
 
 <div class="grid grid-cols-2 gap-6 mt-4 text-sm">
 <div>
-**Core Entities:**
+<strong>Core Entities:</strong>
 <ul class="list-disc pl-5">
   <li>`Customer` (UserId, Name, Email, Addresses)</li>
   <li>`Product` (ProductId, Name, Description, Price, StockQuantity, CategoryId)</li>
@@ -2934,7 +2927,7 @@ EF Core is well-suited for complex applications like e-commerce platforms. Consi
 </ul>
 </div>
 <div>
-**Key Relationships & EF Core Concepts:**
+<strong>Key Relationships &amp; EF Core Concepts:</strong>
 <ul class="list-disc pl-5">
   <li>**Customer to Orders:** One-to-Many (`Customer.Orders`)</li>
   <li>**Order to OrderItems:** One-to-Many (`Order.OrderItems`)</li>
@@ -2952,6 +2945,8 @@ EF Core is well-suited for complex applications like e-commerce platforms. Consi
 <!-- Placeholder for Mermaid Diagram -->
 <div class="mt-4 p-3 bg-gray-700 rounded-lg text-center">
   <p class="text-yellow-300">🛍️ E-commerce Data Model</p>
+</div>
+
 ```mermaid
 erDiagram
     CUSTOMER ||--o{ ORDER : "places"
@@ -2998,7 +2993,6 @@ erDiagram
         string Comment
     }
 ```
-</div>
 
 ---
 layout: default
